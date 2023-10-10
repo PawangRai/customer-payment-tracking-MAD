@@ -3,8 +3,6 @@ import "package:customer_payment_tracking/customer.dart";
 import "package:flutter/material.dart";
 
 class CustomerDetails extends StatefulWidget {
-  static const String id = "customer_details";
-
   Customer customer;
 
   CustomerDetails({super.key, required this.customer});
@@ -17,7 +15,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Appbar")),
+      appBar: AppBar(title: Text("$Widget.customer.name")),
       body: Column(
         children: [
           const Image(

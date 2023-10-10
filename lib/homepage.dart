@@ -99,14 +99,18 @@ class _MyHomePageState extends State<MyHomePage> {
                               snapshot.data!.docs[index]['name'].toString();
                           if (_searchController.text.isEmpty) {
                             return ListTile(
-                              leading: const Image(
-                                  image: NetworkImage(
-                                      "https://img.freepik.com/premium-vector/man-character_665280-46970.jpg?size=626&ext=jpg")),
-                              title: Text(snapshot.data!.docs[index]['name']
-                                  .toString()),
-                              subtitle: Text(
-                                  "$staticText ${snapshot.data!.docs[index]['remaining']}"),
-                            );
+                                leading: const Image(
+                                    image: NetworkImage(
+                                        "https://img.freepik.com/premium-vector/man-character_665280-46970.jpg?size=626&ext=jpg")),
+                                title: Text(snapshot.data!.docs[index]['name']
+                                    .toString()),
+                                subtitle: Text(
+                                    "$staticText ${snapshot.data!.docs[index]['remaining']}"),
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, RouteName.customerDetails,
+                                      arguments: customer);
+                                });
                           } else if (position
                               .toLowerCase()
                               .contains(_searchController.text.toString())) {
@@ -119,13 +123,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               subtitle: Text(
                                   "$staticText ${snapshot.data!.docs[index]['remaining']}"),
                               onTap: () {
-                                // This onTap is not working, not navigating to the correct page
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const Test(),
-                                  ),
-                                );
+                                Navigator.pushNamed(
+                                    context, RouteName.customerDetails,
+                                    arguments: customer);
                               },
                             );
                           } else {
