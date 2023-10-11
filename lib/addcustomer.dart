@@ -17,11 +17,11 @@ class _AddCustomerState extends State<AddCustomer> {
   int _total = 0;
   int _received = 0;
 
-  CollectionReference customers =
+  var customers =
       FirebaseFirestore.instance.collection("customers");
 
   addCustomer() {
-    customers.add({
+    customers.doc(_name).set({
       "name": _name,
       "total": _total,
       "received": _received,

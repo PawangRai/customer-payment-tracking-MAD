@@ -3,4 +3,5 @@ class RouteName {
   static const String addUser = "add_user_screen";
   static const String editUser = "edit_user_screen";
   static const String customerDetails = "customer_details_screen";
+  static const String deleteUser = "delete_user_screen";
 }

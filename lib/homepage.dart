@@ -40,9 +40,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushNamed(context, RouteName.addUser);
                 }),
             IconButton(
-                icon: const Icon(Icons.edit_sharp),
+                icon: const Icon(Icons.delete),
                 iconSize: 30,
-                onPressed: () {}),
+                onPressed: () {
+                  Navigator.pushNamed(context, RouteName.deleteUser);
+                }),
           ]),
       body: Column(
         children: [
@@ -90,10 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           Customer customer = Customer(
                             name: snapshot.data!.docs[index]['name'].toString(),
                             total: snapshot.data!.docs[index]['total'] as int,
-                            received:
-                                snapshot.data!.docs[index]['received'] as int,
-                            remaining:
-                                snapshot.data!.docs[index]['remaining'] as int,
+                            received: snapshot.data!.docs[index]['received'] as int,
+                            remaining: snapshot.data!.docs[index]['remaining'] as int,
                           );
                           late String position =
                               snapshot.data!.docs[index]['name'].toString();
@@ -107,9 +107,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 subtitle: Text(
                                     "$staticText ${snapshot.data!.docs[index]['remaining']}"),
                                 onTap: () {
-                                  Navigator.pushNamed(
-                                      context, RouteName.customerDetails,
-                                      arguments: customer);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => CustomerDetails(
+                                              customer: customer)));
                                 });
                           } else if (position
                               .toLowerCase()
@@ -123,9 +125,11 @@ class _MyHomePageState extends State<MyHomePage> {
                               subtitle: Text(
                                   "$staticText ${snapshot.data!.docs[index]['remaining']}"),
                               onTap: () {
-                                Navigator.pushNamed(
-                                    context, RouteName.customerDetails,
-                                    arguments: customer);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CustomerDetails(
+                                            customer: customer)));
                               },
                             );
                           } else {
