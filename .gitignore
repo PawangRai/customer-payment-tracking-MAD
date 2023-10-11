@@ -9,6 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
+firebase-tools-instant-win.exe
 
 # IntelliJ related
 *.iml
@@ -22,7 +23,7 @@ migrate_working_dir/
 #.vscode/
 
 # Flutter/Dart/Pub related
-firebase-tools-instant-win.exe
+
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
